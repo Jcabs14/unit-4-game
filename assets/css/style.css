@@ -1,3 +1,16 @@
+body{
+    height:100%;
+    width:100%;
+    background-image: url("assets/images/background.jpg");
+
+}
+
+.header{
+    display:flex;
+    justify-content: center;
+}
+
+
 .crystalsArea{
     display:flex;
     justify-content: space-around;
