@@ -23,7 +23,7 @@ $(document).ready(function () {
         document.querySelector(".winsAndLoss").innerHTML = "Wins: " + wins + " " + "Losses: " + losses;
     }
 
-    function restartGame(){
+    function restartGame() {
         randomResult = Math.floor(Math.random() * (max - min)) + min;
         getRandomNumber();
         updateWinsAndLosses();
@@ -31,19 +31,21 @@ $(document).ready(function () {
 
 
     //Create 4 crystals we can click on
-    for (var i = 0; i < 4; i++) {
-        var imgArray = ["assets/images/deadpool.jpg","assets/images/magneto.jpg","assets/images/venom.jpg","assets/images/wolverine.jpg"];
-        var randomNumber = Math.floor(Math.random() * 11) + 1;
-        console.log(randomNumber);
-        var crystal = $("<img>");
-        crystal.addClass("crystal");
-        crystal.attr("src", imgArray[i]);
-        crystal.attr("data-Value", randomNumber);
-        $(".crystalsArea").append(crystal);
+    function createCrystals() {
+        for (var i = 0; i < 4; i++) {
+            var imgArray = ["assets/images/deadpool.jpg", "assets/images/magneto.jpg", "assets/images/venom.jpg", "assets/images/wolverine.jpg"];
+            var randomNumber = Math.floor(Math.random() * 11) + 1;
+            console.log(randomNumber);
+            var crystal = $("<img>");
+            crystal.addClass("crystal");
+            crystal.attr("src", imgArray[i]);
+            crystal.attr("data-Value", randomNumber);
+            $(".crystalsArea").append(crystal);
+        }
     }
 
     //each crystal will have a random number we can click on to add to our total score
-    $(document).on("click",".crystal", function (event) {
+    $(document).on("click", ".crystal", function (event) {
         // Determining the crystal's value requires us to extract the value from the data attribute.
         // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
         var crystalValue = ($(this).attr("data-Value"));
@@ -56,21 +58,29 @@ $(document).ready(function () {
         console.log(ourTotal);
 
         if (ourTotal === randomResult) {
-            ourTotal=0;
-            alert("You win!");
+            ourTotal = 0;
+            alert("You're A WINNER!");
             wins++;
             restartGame();
+            $(".crystalsArea").empty();
+            createCrystals();
+
         }
 
         else if (ourTotal > randomResult) {
-            ourTotal=0;
-            alert("you lose");
+            ourTotal = 0;
+            alert("You lose bub try again!");
             losses++;
             restartGame();
+            $(".crystalsArea").empty();
+
+            createCrystals();
+
         }
 
     });
 
+    createCrystals();
     updateWinsAndLosses();
     getRandomNumber();
 });
