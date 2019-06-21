@@ -2,7 +2,7 @@
 
 A simple game to teach myself javascript and jquery.
 
-##instructions
+## instructions
 At the start of the game you will be given a random number at the start of the game.
 
 There are four pictures below of Marvel characters below.
