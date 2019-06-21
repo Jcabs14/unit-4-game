@@ -7,10 +7,22 @@ html{
     
 }
 
+.buttonContainer{
+    margin: 10px 10px;
+    text-align: center;
+
+}
+
+.info{
+    font-size:20px;
+    background-color:violet;
+    letter-spacing: 2px;
+    margin: 10px 10px;
+    padding: 5px;
+}
+
 button{
-    display: block; 
-    margin: 0 auto;
-    
+    display: inline-block;
 }
 
 .header{
@@ -23,7 +35,7 @@ button{
     display:flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 2px;
+    margin: 10px 10px;
 
 
 }
@@ -48,18 +60,20 @@ button{
     color:red;
     height: 50px;
     width: 200px;
-    margin-top: 2px;
+    margin: 10px 10px;
     font-size:20px;
 
 }
 
 .winsAndLoss{
+    bored: 1px solid violet;
     color:black;
     font-size:20px;
-    height: 100px;
+    height: 50px;
     width: 100px;
     background-color: yellow;
-    margin-top: 2px;
+    margin: 10px 10px;
+
 }
 
 
@@ -68,4 +82,12 @@ img:hover{
     -moz-box-shadow: 0 0 20px #ccc;
 		-webkit-box-shadow: 0 0 20px #ccc;
 		box-shadow: 0 0 20px #ccc;
+}
+
+/* Hover effects on buttons */
+button:hover{
+    -moz-box-shadow: 0 0 20px #ccc;
+    -webkit-box-shadow: 0 0 20px #ccc;
+    box-shadow: 0 0 20px #ccc;
+
 }
