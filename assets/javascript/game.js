@@ -12,9 +12,21 @@ $(document).ready(function () {
     var max = 120;
     randomResult = Math.floor(Math.random() * (max - min)) + min;
 
+
+    //sound for crystal
+    var selectSound = new Audio("assets/sound/8bitSelection.wav");
+
+    //sound for winning
+    var winSound = new Audio("assets/sound/win.wav");
+
+    //sound for losing
+    var loseSound = new Audio("assets/sound/lose.wav");
+
+    //sound for music
+    var musicSound = new Audio("assets/sound/music.wav");
+
     //random number show begining of game
     function getRandomNumber() {
-        console.log(randomResult);
         document.querySelector(".total").innerHTML = "Please match this number: " + randomResult;
     }
 
@@ -28,6 +40,15 @@ $(document).ready(function () {
         getRandomNumber();
         updateWinsAndLosses();
     }
+
+    $("#start").on("click", function(event){
+        musicSound.play();
+    })
+
+    $("#stop").on("click", function(event){
+        musicSound.pause();
+    });
+
 
 
     //Create 4 crystals we can click on
@@ -44,6 +65,7 @@ $(document).ready(function () {
         }
     }
 
+
     //each crystal will have a random number we can click on to add to our total score
     $(document).on("click", ".crystal", function (event) {
         // Determining the crystal's value requires us to extract the value from the data attribute.
@@ -51,14 +73,15 @@ $(document).ready(function () {
         var crystalValue = ($(this).attr("data-Value"));
 
         // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
-
         crystalValue = parseInt(crystalValue);
         ourTotal += crystalValue;
         document.querySelector(".score").innerHTML = ourTotal;
-        console.log(ourTotal);
+
+        selectSound.play();
 
         if (ourTotal === randomResult) {
             ourTotal = 0;
+            winSound.play();
             alert("You're A WINNER!");
             wins++;
             restartGame();
@@ -69,11 +92,11 @@ $(document).ready(function () {
 
         else if (ourTotal > randomResult) {
             ourTotal = 0;
+            loseSound.play();
             alert("You lose bub try again!");
             losses++;
             restartGame();
             $(".crystalsArea").empty();
-
             createCrystals();
 
         }
@@ -83,6 +106,7 @@ $(document).ready(function () {
     createCrystals();
     updateWinsAndLosses();
     getRandomNumber();
+
 });
 
 
