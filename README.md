@@ -17,3 +17,6 @@ The value of each character is hidden from you until you click on it.
 Each time when the game starts, the game will change the value of each crystal.
 
 PS: Be sure to have sound on!
+
+### Link to project
+https://jcabs14.github.io/unit-4-game/
